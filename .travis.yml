@@ -9,3 +9,16 @@ before_install:
 
 script:
   - docker run -e CI=true camelcat/docker-react npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-north-1"
+  app: "docker-react"
+  env: "DockeReact-env"
+  bucket_name: "elasticbeanstalk-eu-north-1-271018699830"
+  bucket_path: "docker-react"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
