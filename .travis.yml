@@ -6,7 +6,7 @@ services:
 
 before_install:
   - docker login -u $DOCKERHUB_LOGIN -p $DOCKERHUB_PASSWORD 
-  - docker build -t docker-react -f Dockerfile.dev
+  - docker build -t docker-react -f Dockerfile.dev .
 
 script:
   - docker run -e CI=true docker-react npm run test
